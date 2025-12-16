@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Belajar Nihongo — Hobi & Kalimat Dasar</title>
+    <style>
+      /* ---------- Theme & Reset ---------- */
+      :root {
+        --bg1: #7c3aed;
+        --bg2: #6366f1;
+        --card: rgba(255, 255, 255, 0.9);
+        --glass: rgba(255, 255, 255, 0.6);
+        --muted: #6b7280;
+        --accent: #6d28d9;
+        --radius: 16px;
+        --shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+        --text: #1e1b4b;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, var(--bg1), var(--bg2));
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      /* ---------- Layout ---------- */
+      .app {
+        width: 100%;
+        max-width: 1100px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        padding: 24px;
+        backdrop-filter: blur(12px);
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 16px;
+      }
+
+      .logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--bg1), #7c3aed);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 800;
+        font-size: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .title-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .title {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 800;
+      }
+
+      .subtitle {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 13px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav a {
+        padding: 8px 16px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .nav a.active {
+        background: #fff;
+        color: var(--accent);
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .panel {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      /* ---------- Grid Hobi ---------- */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+        justify-items: center;
+      }
+
+      .hobby {
+        width: 100%;
+        background: linear-gradient(180deg, var(--glass), #ffffff);
+        border-radius: 14px;
+        padding: 16px;
+        text-align: center;
+        border: 1px solid rgba(15, 23, 42, 0.05);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        cursor: pointer;
+      }
+
+      .hobby:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .emoji {
+        font-size: 36px;
+      }
+
+      .jp {
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .romaji,
+      .idn {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* ---------- Sentence Card ---------- */
+      .sentence {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .big-jp {
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--accent);
+      }
+
+      .big-jp em {
+        background: linear-gradient(90deg, #f0e6ff, #fff);
+        padding: 3px 6px;
+        border-radius: 6px;
+        font-style: normal;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      button {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+
+      button:hover {
+        background: #5b21b6;
+      }
+
+      /* Quiz */
+      .quiz-q {
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+      .choices {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .choice {
+        padding: 10px;
+        border-radius: 8px;
+        background: #f8fafc;
+        border: 1px solid rgba(15, 23, 42, 0.04);
+        cursor: pointer;
+      }
+      .choice.correct {
+        border-color: #10b981;
+        background: #ecfdf5;
+      }
+      .choice.wrong {
+        border-color: #ef4444;
+        background: #fff1f2;
+      }
+
+      footer {
+        margin-top: 16px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 13px;
+      }
+
+      /* ---------- Responsive Tweaks ---------- */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .logo {
+          width: 56px;
+          height: 56px;
+          font-size: 22px;
+        }
+
+        .title {
+          font-size: 18px;
+        }
+
+        .grid {
+          grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        }
+
+        .panel {
+          padding: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 10px;
+        }
+
+        .app {
+          padding: 16px;
+        }
+
+        .hobby {
+          padding: 12px;
+        }
+
+        .jp {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app">
+      <header>
+        <div class="logo">にN</div>
+        <div class="title-group">
+          <div class="title">Belajar Nihongo</div>
+          <div class="subtitle">
+            Pola: "わたしのしゅみは ... です。" • Pemula
+          </div>
+        </div>
+
+        <nav>
+          <div class="nav">
+            <a href="#home" data-link class="active">Home</a>
+            <a href="#belajar" data-link>Belajar</a>
+            <a href="#kuis" data-link>Kuis</a>
+            <a href="#tentang" data-link>Tentang</a>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section id="content-left"></section>
+
+        <!-- <aside class="panel" id="side-panel">
+          <div style="font-weight: 800; margin-bottom: 10px">
+            Pembelajaran Cepat
+          </div>
+          <div id="side-sentence" class="sentence">
+            <div class="big-jp">
+              わたしのしゅみは　<em>げーむをすることです。</em>
+            </div>
+            <div class="romaji">
+              Watashi no shumi wa geemu o suru koto desu.
+            </div>
+            <div class="idn">Hobi saya adalah bermain game.</div>
+          </div>
+
+          <div style="margin-top: 14px">
+            <div style="font-weight: 700; margin-bottom: 6px">
+              Pilih untuk belajar
+            </div>
+            <select
+              id="select-quick"
+              style="
+                width: 100%;
+                padding: 8px;
+                border-radius: 8px;
+                border: 1px solid rgba(15, 23, 42, 0.06);
+              "
+            ></select>
+            <div class="controls" style="margin-top: 10px">
+              <button id="btn-speak">🔊 Ucapkan</button>
+              <button id="btn-go-belajar">📖 Buka Belajar</button>
+            </div>
+          </div>
+        </aside> -->
+      </main>
+
+      <footer>© 2025 — Belajar Nihongo • Dibuat untuk pemula</footer>
+    </div>
+
+    <script>
+      const HOBBIES = [
+        {
+          id: "bermain game",
+          emoji: "🎮",
+          jp: "ゲームをする",
+          rom: "gēmu o suru",
+          idn: "Bermain game",
+        },
+        {
+          id: "memasak",
+          emoji: "🍳",
+          jp: "りょうりをする",
+          rom: "ryōri o suru",
+          idn: "Memasak",
+        },
+        {
+          id: "menonton film",
+          emoji: "🎬",
+          jp: "えいがをみる",
+          rom: "eiga o miru",
+          idn: "Menonton film",
+        },
+        {
+          id: "membaca buku",
+          emoji: "📚",
+          jp: "ほんをよむ",
+          rom: "hon o yomu",
+          idn: "Membaca buku",
+        },
+        {
+          id: "mendengarkan musik",
+          emoji: "🎵",
+          jp: "おんがくをきく",
+          rom: "ongaku o kiku",
+          idn: "Mendengarkan musik",
+        },
+        {
+          id: "petualangan",
+          emoji: "✈️",
+          jp: "りょこうをする",
+          rom: "ryokō o suru",
+          idn: "Bepergian",
+        },
+        {
+          id: "olahraga",
+          emoji: "🏃‍♂️",
+          jp: "うんどうをする",
+          rom: "undō o suru",
+          idn: "Olahraga",
+        },
+        {
+          id: "mengambil foto",
+          emoji: "📷",
+          jp: "しゃしんをとる",
+          rom: "shashin o toru",
+          idn: "Fotografi",
+        },
+        {
+          id: "menggambar",
+          emoji: "🎨",
+          jp: "えをかく",
+          rom: "e o kaku",
+          idn: "Menggambar",
+        },
+        {
+          id: "menyanyi",
+          emoji: "🎤",
+          jp: "うたう",
+          rom: "utau",
+          idn: "Bernyanyi",
+        },
+        /*{
+          id: "pcgame",
+          emoji: "🕹️",
+          jp: "こんぴゅーたーげーむ",
+          rom: "konpyūta gēmu",
+          idn: "Main komputer",
+        },
+        {
+          id: "puzzle",
+          emoji: "🧩",
+          jp: "ぱずるをする",
+          rom: "pazuru o suru",
+          idn: "Bermain puzzle",
+        },
+        {
+          id: "theatre",
+          emoji: "🎭",
+          jp: "げきをする",
+          rom: "geki o suru",
+          idn: "Teater",
+        }, */
+        {
+          id: "berkebun",
+          emoji: "🌱",
+          jp: "にわづくり",
+          rom: "niwazukuri",
+          idn: "Berkebun",
+        },
+        {
+          id: "bersepeda",
+          emoji: "🚴‍♀️",
+          jp: "サイクリング",
+          rom: "saikuringu",
+          idn: "Bersepeda",
+        },
+        {
+          id: "menulis",
+          emoji: "✍️",
+          jp: "ぶんしょうをかく",
+          rom: "bunshō o kaku",
+          idn: "Menulis",
+        },
+        { id: "dance", emoji: "💃", jp: "おどる", rom: "odoru", idn: "Menari" },
+        {
+          id: "berenang",
+          emoji: "🏊‍♀️",
+          jp: "およぐ",
+          rom: "oyogu",
+          idn: "Berenang",
+        },
+        /*{
+          id: "collect",
+          emoji: "📦",
+          jp: "あつめること",
+          rom: "atsumeru koto",
+          idn: "Mengumpulkan (koleksi)",
+        },
+        {
+          id: "craft",
+          emoji: "🧵",
+          jp: "てづくりをする",
+          rom: "tedukuri o suru",
+          idn: "Kerajinan tangan",
+        },*/
+      ];
+
+      function router() {
+        const hash = location.hash.replace("#", "") || "home";
+        document
+          .querySelectorAll("a[data-link]")
+          .forEach((a) =>
+            a.classList.toggle("active", a.getAttribute("href") === "#" + hash)
+          );
+        renderPage(hash);
+      }
+      window.addEventListener("hashchange", router);
+
+      function renderPage(name) {
+        const left = document.getElementById("content-left");
+        if (name === "home" || name === "") {
+          left.innerHTML = renderHome();
+          attachHomeHandlers();
+        } else if (name === "belajar") {
+          left.innerHTML = renderBelajar();
+          attachBelajarHandlers();
+        } else if (name === "kuis") {
+          left.innerHTML = renderKuis();
+          attachKuisHandlers();
+        } else if (name === "tentang") {
+          left.innerHTML = renderTentang();
+        } else {
+          left.innerHTML = `<div class="panel">Halaman tidak ditemukan</div>`;
+        }
+
+        populateQuickSelect();
+      }
+
+      function renderHome() {
+        return `
+      <div class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div style="font-weight:800;font-size:18px">Home — Daftar Hobi (Pemula)</div>
+          <div style="color:var(--muted);font-size:13px">Klik kartu untuk lihat di panel samping / belajar</div>
+        </div>
+        <div class="grid" id="home-grid"></div>
+      </div>
+    `;
+      }
+
+      function renderBelajar() {
+        return `
+      <div class="panel">
+        <div style="font-weight:800;font-size:18px;margin-bottom:10px">Belajar — Pilih Hobi</div>
+
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px">
+          <select id="learn-select" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(15,23,42,0.04)"></select>
+          <button id="btn-choose">Tampilkan</button>
+        </div>
+
+        <div id="learn-card" class="sentence" style="padding:12px;background:var(--card);border-radius:12px">
+          <div id="learn-bigjp" class="big-jp">わたしのしゅみは　<em>げーむをすることです。</em></div>
+          <div id="learn-romaji" class="romaji">Watashi no shumi wa geemu o suru koto desu.</div>
+          <div id="learn-idn" class="idn">Hobi saya adalah bermain game.</div>
+          <div class="controls" style="margin-top:12px">
+            <button id="btn-speak2">🔊 Ucapkan</button>
+            <button id="btn-random2">🔀 Acak</button>
+          </div>
+        </div>
+      </div>
+    `;
+      }
+
+      function renderKuis() {
+        return `
+      <div class="panel">
+        <div style="font-weight:800;font-size:18px;margin-bottom:10px">Kuis — 10 Soal</div>
+        <div id="quiz-card">
+          <div id="quiz-question" class="quiz-q">Soal akan muncul di sini</div>
+          <div id="quiz-choices" class="choices"></div>
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+            <button id="quiz-next">Soal Berikutnya</button>
+            <div id="quiz-status" style="margin-left:8px;color:var(--muted)"></div>
+            <div style="margin-left:auto;color:var(--muted)">Skor: <span id="quiz-score">0</span></div>
+          </div>
+        </div>
+      </div>
+    `;
+      }
+
+      function renderTentang() {
+        return `
+      <div class="panel">
+        <div style="font-weight:800;font-size:18px;margin-bottom:10px">Tentang</div>
+        <p style="color:var(--muted)">Aplikasi interaktif ini dibuat untuk pemula belajar pola "わたしのしゅみは ___ です。" — menampilkan kosakata hobi sederhana, latihan pelafalan (TTS), dan kuis latihan.</p>
+      </div>
+    `;
+      }
+
+      function populateHomeGrid() {
+        const grid = document.getElementById("home-grid");
+        grid.innerHTML = "";
+        HOBBIES.forEach((h) => {
+          const el = document.createElement("div");
+          el.className = "hobby";
+          el.innerHTML = `<div class="emoji">${h.emoji}</div><div class="jp">${h.jp}</div><div class="romaji">${h.rom}</div><div class="idn">${h.id}</div>`;
+          el.addEventListener("click", () => {
+            setQuickSelection(h.id);
+            updateSideSentence(h);
+          });
+          grid.appendChild(el);
+        });
+      }
+
+      function populateQuickSelect() {
+        const sel = document.getElementById("select-quick");
+        if (!sel) return;
+        sel.innerHTML = "";
+        HOBBIES.forEach((h) => {
+          const opt = document.createElement("option");
+          opt.value = h.id;
+          opt.textContent = `${h.emoji} ${h.id} — ${h.jp}`;
+          sel.appendChild(opt);
+        });
+      }
+
+      function populateLearnSelect() {
+        const sel = document.getElementById("learn-select");
+        if (!sel) return;
+        sel.innerHTML = "";
+        HOBBIES.forEach((h) => {
+          const opt = document.createElement("option");
+          opt.value = h.id;
+          opt.textContent = `${h.emoji} ${h.id} — ${h.jp}`;
+          sel.appendChild(opt);
+        });
+      }
+
+      function updateSideSentence(h) {
+        const side = document.getElementById("side-sentence");
+        if (!side) return;
+        const big = side.querySelector(".big-jp");
+        const rom = side.querySelector(".romaji");
+        const idn = side.querySelector(".idn");
+        big.innerHTML = `わたしのしゅみは　<em>${h.jp}ことです。</em>`;
+        rom.textContent = `Watashi no shumi wa ${h.rom} koto desu.`;
+        idn.textContent = h.id;
+
+        const sel = document.getElementById("select-quick");
+        if (sel) sel.value = h.id;
+      }
+
+      function attachHomeHandlers() {
+        populateHomeGrid();
+        populateQuickSelect();
+
+        updateSideSentence(HOBBIES[0]);
+
+        document.getElementById("btn-speak").onclick = () => {
+          const sel = document.getElementById("select-quick");
+          const h = HOBBIES.find((x) => x.id === sel.value) || HOBBIES[0];
+          speakText(`わたしのしゅみは ${h.jp}ことです。`);
+        };
+        document.getElementById("btn-go-belajar").onclick = () => {
+          const sel = document.getElementById("select-quick");
+          location.hash = "#belajar";
+
+          setTimeout(() => {
+            const learnSel = document.getElementById("learn-select");
+            if (learnSel) learnSel.value = sel.value;
+
+            const btn = document.getElementById("btn-choose");
+            if (btn) btn.click();
+          }, 120);
+        };
+      }
+
+      function attachBelajarHandlers() {
+        populateLearnSelect();
+        const sel = document.getElementById("learn-select");
+        const btnChoose = document.getElementById("btn-choose");
+        const btnRandom = document.getElementById("btn-random2");
+        const btnSpeak = document.getElementById("btn-speak2");
+
+        btnChoose.onclick = () => {
+          const id = sel.value;
+          const h = HOBBIES.find((x) => x.id === id) || HOBBIES[0];
+          showLearn(h);
+        };
+
+        btnRandom.onclick = () => {
+          const r = HOBBIES[Math.floor(Math.random() * HOBBIES.length)];
+          sel.value = r.id;
+          showLearn(r);
+        };
+
+        btnSpeak.onclick = () => {
+          const id = sel.value;
+          const h = HOBBIES.find((x) => x.id === id) || HOBBIES[0];
+          speakText(`わたしのしゅみは ${h.jp}ことです。`);
+        };
+
+        showLearn(HOBBIES[0]);
+      }
+
+      function showLearn(h) {
+        const big = document.getElementById("learn-bigjp");
+        const rom = document.getElementById("learn-romaji");
+        const idn = document.getElementById("learn-idn");
+        big.innerHTML = `わたしのしゅみは　<em>${h.jp}ことです。</em>`;
+        rom.textContent = `Watashi no shumi wa ${h.rom} koto desu.`;
+        idn.textContent = h.id;
+
+        const quick = document.getElementById("select-quick");
+        if (quick) quick.value = h.id;
+        updateSideSentence(h);
+      }
+
+      function speakText(txt) {
+        if (!("speechSynthesis" in window)) {
+          alert("TTS tidak tersedia pada browser ini.");
+          return;
+        }
+        const u = new SpeechSynthesisUtterance(txt);
+        u.lang = "ja-JP";
+        speechSynthesis.cancel();
+        speechSynthesis.speak(u);
+      }
+
+      /* ================= QUIZ SYSTEM (FULL REPLACEMENT) ================= */
+
+let QUIZ = { index: 0, score: 0, questions: [] };
+
+/* ===== HELPER ===== */
+function shuffle(arr) {
+  return arr.slice().sort(() => Math.random() - 0.5);
+}
+
+function jpWithRomaji(jp, rom) {
+  return `${jp}\n(${rom})`;
+}
+
+function choiceJP(opt) {
+  return `
+    <div>${opt.jp}</div>
+    <div style="font-size:12px;color:#6b7280">(${opt.rom})</div>
+  `;
+}
+
+/* ================= GENERATE QUESTIONS ================= */
+function generateQuizQuestions(n) {
+  const out = [];
+  const pool = [...HOBBIES];
+
+  const TYPES = [
+    "jp_to_id",        // Jepang → Indonesia
+    "id_to_jp",        // Indonesia → Jepang
+    "romaji_to_id",    // Romaji → Indonesia
+    "jp_to_romaji",    // Jepang → Romaji
+    "fill_blank",      // Isi bagian kosong
+    "true_false",      // Benar / Salah
+    "context_choice",  // Pilih konteks
+    "meaning_check"    // Makna kalimat
+  ];
+
+  for (let i = 0; i < n; i++) {
+    const correct = pool[Math.floor(Math.random() * pool.length)];
+    const options = shuffle(pool).slice(0, 4);
+    if (!options.find(o => o.id === correct.id)) options[0] = correct;
+
+    const type = TYPES[i % TYPES.length];
+
+    /* 1️⃣ Jepang → Indonesia */
+    if (type === "jp_to_id") {
+      out.push({
+        type,
+        prompt: jpWithRomaji(
+          `わたしのしゅみは ${correct.jp}ことです。`,
+          `watashi no shumi wa ${correct.rom} koto desu`
+        ),
+        correct,
+        options
+      });
+    }
+
+    /* 2️⃣ Indonesia → Jepang */
+    else if (type === "id_to_jp") {
+      out.push({
+        type,
+        prompt: `Pilih kalimat Jepang untuk:\n"${correct.id}"`,
+        correct,
+        options
+      });
+    }
+
+    /* 3️⃣ Romaji → Indonesia */
+    else if (type === "romaji_to_id") {
+      out.push({
+        type,
+        prompt: `Arti dari romaji berikut:\n"${correct.rom}"`,
+        correct,
+        options
+      });
+    }
+
+    /* 4️⃣ Jepang → Romaji */
+    else if (type === "jp_to_romaji") {
+      out.push({
+        type,
+        prompt: `Romaji dari berikut ini adalah:\n${correct.jp}`,
+        correct,
+        options
+      });
+    }
+
+    /* 5️⃣ Fill the Blank */
+    else if (type === "fill_blank") {
+      out.push({
+        type,
+        prompt: `わたしのしゅみは ___ ことです。\n(${correct.id})`,
+        correct,
+        options
+      });
+    }
+
+    /* 6️⃣ True / False */
+    else if (type === "true_false") {
+      const wrong = pool.find(h => h.id !== correct.id);
+      out.push({
+        type,
+        prompt: jpWithRomaji(
+          `わたしのしゅみは ${correct.jp}ことです。`,
+          `watashi no shumi wa ${correct.rom} koto desu`
+        ) + `\n\nArtinya:\n"${wrong.id}"`,
+        correct,
+        options: [
+          { id: "Benar" },
+          { id: "Salah" }
+        ],
+        answer: "Salah"
+      });
+    }
+
+    /* 7️⃣ Pilih Konteks */
+    else if (type === "context_choice") {
+      out.push({
+        type,
+        prompt: jpWithRomaji(
+          `しゅうまつに よく ___ ことです。`,
+          `shuumatsu ni yoku ___ koto desu`
+        ),
+        correct,
+        options
+      });
+    }
+
+    /* 8️⃣ Cek Makna */
+    else if (type === "meaning_check") {
+      out.push({
+        type,
+        prompt: jpWithRomaji(
+          `わたしは ${correct.jp}のが すきです。`,
+          `watashi wa ${correct.rom} no ga suki desu`
+        ),
+        correct,
+        options
+      });
+    }
+  }
+
+  return out;
+}
+
+/* ================= RENDER ================= */
+function renderQuizQuestion() {
+  const q = QUIZ.questions[QUIZ.index];
+  const qEl = document.getElementById("quiz-question");
+  const chEl = document.getElementById("quiz-choices");
+  const status = document.getElementById("quiz-status");
+
+  qEl.innerText = `${QUIZ.index + 1}. ${q.prompt}`;
+  chEl.innerHTML = "";
+  status.textContent = `Soal ${QUIZ.index + 1} dari ${QUIZ.questions.length}`;
+
+  q.options.forEach(opt => {
+    const d = document.createElement("div");
+    d.className = "choice";
+
+    if (
+      q.type === "jp_to_id" ||
+      q.type === "romaji_to_id" ||
+      q.type === "context_choice" ||
+      q.type === "meaning_check"
+    ) {
+      d.textContent = opt.id;
+    }
+    else if (q.type === "id_to_jp" || q.type === "fill_blank") {
+      d.innerHTML = choiceJP(opt);
+    }
+    else if (q.type === "jp_to_romaji") {
+      d.textContent = opt.rom;
+    }
+    else if (q.type === "true_false") {
+      d.textContent = opt.id;
+    }
+
+    d.onclick = () => {
+      if (d.classList.contains("correct") || d.classList.contains("wrong")) return;
+
+      let isCorrect = false;
+
+      if (q.type === "true_false") {
+        isCorrect = opt.id === q.answer;
+      } else if (q.type === "jp_to_romaji") {
+        isCorrect = opt.rom === q.correct.rom;
+      } else {
+        isCorrect = opt.id === q.correct.id;
+      }
+
+      if (isCorrect) {
+        d.classList.add("correct");
+        QUIZ.score++;
+        document.getElementById("quiz-score").textContent = QUIZ.score;
+      } else {
+        d.classList.add("wrong");
+        [...chEl.children].forEach(c => {
+          if (
+            c.textContent.includes(q.correct.id) ||
+            c.textContent.includes(q.correct.jp) ||
+            c.textContent.includes(q.correct.rom)
+          ) c.classList.add("correct");
+        });
+      }
+
+      [...chEl.children].forEach(c => c.style.pointerEvents = "none");
+    };
+
+    chEl.appendChild(d);
+  });
+}
+
+/* ================= INIT ================= */
+function attachKuisHandlers() {
+  QUIZ.questions = generateQuizQuestions(16);
+  QUIZ.index = 0;
+  QUIZ.score = 0;
+
+  document.getElementById("quiz-score").textContent = 0;
+  renderQuizQuestion();
+
+  document.getElementById("quiz-next").onclick = () => {
+    QUIZ.index++;
+    if (QUIZ.index >= QUIZ.questions.length) {
+      document.getElementById("quiz-question").textContent =
+        `Selesai! Skor: ${QUIZ.score} / ${QUIZ.questions.length}`;
+      document.getElementById("quiz-choices").innerHTML =
+        `<button id="quiz-retry">🔁 Coba Lagi</button>`;
+      document.getElementById("quiz-retry").onclick = attachKuisHandlers;
+      document.getElementById("quiz-status").textContent = "";
+    } else {
+      renderQuizQuestion();
+    }
+  };
+}
+
+
+
+      function init() {
+        router();
+
+        const sideSel = document.getElementById("select-quick");
+        if (sideSel) {
+          sideSel.onchange = () => {
+            const h = HOBBIES.find((x) => x.id === sideSel.value);
+            if (h) updateSideSentence(h);
+          };
+        }
+
+        populateQuickSelect();
+
+        updateSideSentence(HOBBIES[0]);
+      }
+
+      window.addEventListener("load", () => {
+        init();
+
+        window.addEventListener("hashchange", () => {
+          router();
+
+          if (location.hash.replace("#", "") === "home") {
+            setTimeout(() => populateHomeGrid(), 80);
+          }
+        });
+
+        if (!location.hash || location.hash === "#home") {
+          setTimeout(() => {
+            populateHomeGrid();
+          }, 50);
+        }
+      });
+    </script>
+  </body>
+</html>
+
